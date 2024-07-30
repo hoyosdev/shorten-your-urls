@@ -1,14 +1,12 @@
 import logo from './../images/logo.svg';
 import menu_icon from './../images/menu-icon.svg'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 
 function Navbar() {
     const [isVisible, setIsVisible] = useState(true);
-    const [windowWidth, setWindowWidth] = useState(0);
 
     let showMobileMenu = () => {
-      setWindowWidth(window.innerWidth);
       if (window.innerWidth < 690) {
         setIsVisible(false)
       } else {
@@ -17,16 +15,13 @@ function Navbar() {
       
     };
   
-    useEffect(() => {
+    useLayoutEffect(() => {
         showMobileMenu();
-      window.addEventListener("resize", showMobileMenu);      
-      console.log("use effect")
-      return () => window.removeEventListener("resize", showMobileMenu);
-     
+        window.addEventListener("resize", showMobileMenu);      
+        return () => window.removeEventListener("resize", showMobileMenu);
     }, []);
 
     return <>
- 
             <nav className='container navbar'>
                
                     <a className='logo'><img src={logo} ></img></a>
@@ -57,8 +52,7 @@ function Navbar() {
                 onClick={() => setIsVisible(!isVisible)}>
      
                     <img height={36} src={menu_icon}>                       
-                    </img></a>
-                    
+                    </img></a>                   
             </nav>
         </>
 }
