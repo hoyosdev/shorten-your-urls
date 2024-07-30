@@ -8,6 +8,7 @@ function Header() {
                 <div className='header-content'>
                     <h1 className='header-title'>More than just shorter links </h1>
                     <p className='header-subtitle'>Build your brand's recognition and get detailed insights on how your links are performing.</p>
+                    <div className="m-mid"></div>
                     <button className='btn-primary'>Get started</button>
                 </div>
                 </div>
