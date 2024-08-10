@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 
-const token = "xvuW5AYFn8t385toz5MvNEZZmuoyUVHBzzCZN4gAWNOR9l5Tks6R6u1T4eQd";
+
+const token = process.env.REACT_APP_API_KEY;
+console.log(token)
 axios.defaults.baseURL = `https://api.tinyurl.com/create?api_token=${token}`;
 
 const useAxios = () => {
