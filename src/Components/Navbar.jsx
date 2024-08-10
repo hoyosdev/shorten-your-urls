@@ -24,23 +24,23 @@ function Navbar() {
     return <>
             <nav className='container navbar'>
                
-                    <a className='logo'><img src={logo} ></img></a>
+                    <a className='logo' href='/'><img src={logo} alt='Shortly logo'></img></a>
                     {isVisible && (
                     <ul className='navbar-list'>
                     <div className='navbar-content'>
                     <li>
-                        <a className='navbar-link'>Features</a>
+                        <a href='/' className='navbar-link'>Features</a>
                     </li>
                     <li>
-                        <a className='navbar-link'>Pricing</a>
+                        <a href='/' className='navbar-link'>Pricing</a>
                     </li>
                     <li>
-                        <a className='navbar-link'>Resources</a>
+                        <a href='/' className='navbar-link'>Resources</a>
                     </li>
                 </div>
                 <div className='navbar-content'>
                 <li>
-                        <a className='navbar-link'>Login</a>
+                        <a href='/' className='navbar-link'>Login</a>
                     </li>     
                     <li>
                         <button className='btn-primary'>Sign up</button>
@@ -48,10 +48,10 @@ function Navbar() {
                 </div>
            
                 </ul> )}
-                <a className='menu-icon'
+                <a className='menu-icon' href='/'
                 onClick={() => setIsVisible(!isVisible)}>
      
-                    <img height={36} src={menu_icon}>                       
+                    <img height={36} src={menu_icon} alt='Shortly logo'>                       
                     </img></a>                   
             </nav>
         </>

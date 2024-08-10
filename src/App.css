@@ -3,14 +3,14 @@
   padding: 0;
   line-height: 1.2;
   color: hsl(260, 8%, 14%);
-  font-family: "Poppins", sans-serif;
+  
 }
 
 .container{ 
   margin-left: auto;
   margin-right: auto;
   width: 96%;
-  max-width: 80rem;
+  max-width: 60rem;
   padding-left: 2%;
   padding-right: 2%;
  }
@@ -66,6 +66,7 @@ ul {
   position: relative;
   height: 482px;
   overflow: hidden;
+  padding-bottom: 8rem;
 }
 .header-content {
   position: relative;
@@ -94,12 +95,16 @@ h1{
   font-weight: 600;
   cursor: pointer;
   transition: 0.2ms;
-
 }
 .btn-primary:hover {
-  background-color: hsl(180, 66%, 49%, 0.4);
+  background-color: hsl(180, 81%, 75%);
 }
-
+.btn-square {
+  border-radius: 10px;
+}
+.btn-copied:focus {
+  background-color: hsl(257, 27%, 26%);
+}
 .header-img {
   position: absolute;
   right: -5%;
@@ -172,4 +177,76 @@ h1{
  .navbar-content {
   gap: 15px;
  }
+}
+.relative {
+  position: relative;
+}
+.bg-light {
+  background-color: hsla(258, 7%, 63%, 0.125);
+  padding-bottom: 4rem ;
+  padding-top: 4rem ;
+}
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.link-bar-wrapper {
+  width: 86%;
+  background-image: url('./images/bg-shorten-desktop.svg');
+  position: absolute;
+  top:-233px;
+  background-color: hsl(257, 27%, 26%);
+  border-radius: 15px;
+  padding: 4%;
+}
+
+.link-bar-input {
+  height: 40px;
+  width: 80%;
+  border: solid 2px hsl(0, 87%, 67%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+::placeholder {
+  color: hsl(0, 86%, 78%);
+}
+
+.list {
+  margin-top: 90px;
+}
+.list-flex {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  border-radius:10px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.truncate {
+  width: 30rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fc-cyan {
+  color: hsl(180, 66%, 49%);
+}
+
+.input-error {
+  color: hsl(0, 87%, 67%);
+  margin-top: 10px;
+  font-weight: 500;
 }
