@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 const token = process.env.REACT_APP_API_KEY;
-console.log(token)
 axios.defaults.baseURL = `https://api.tinyurl.com/create?api_token=${token}`;
 
 const useAxios = () => {
