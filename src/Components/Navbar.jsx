@@ -1,60 +1,85 @@
-import logo from './../images/logo.svg';
-import menu_icon from './../images/menu-icon.svg'
-import React, { useState, useLayoutEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
+import logo from "./../images/logo.svg";
+import menu_icon from "./../images/menu-icon.svg";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
-    const [isVisible, setIsVisible] = useState(true);
+  const windowSize = window.innerWidth > 765 ? true : false;
+  const [isMenuOpen, setIsMenuOpen] = useState(windowSize);
 
-    let showMobileMenu = () => {
-      if (window.innerWidth < 690) {
-        setIsVisible(false)
+  const showMobileMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 765) {
+        setIsMenuOpen(true);
       } else {
-        setIsVisible(true)
+        setIsMenuOpen(false);
       }
-      
-    };
-  
-    useLayoutEffect(() => {
-        showMobileMenu();
-        window.addEventListener("resize", showMobileMenu);      
-        return () => window.removeEventListener("resize", showMobileMenu);
-    }, []);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
 
-    return <>
-            <nav className='container navbar'>
-               
-                    <a className='logo' href='/'><img src={logo} alt='Shortly logo'></img></a>
-                    {isVisible && (
-                    <ul className='navbar-list'>
-                    <div className='navbar-content'>
-                    <li>
-                        <a href='/' className='navbar-link'>Features</a>
-                    </li>
-                    <li>
-                        <a href='/' className='navbar-link'>Pricing</a>
-                    </li>
-                    <li>
-                        <a href='/' className='navbar-link'>Resources</a>
-                    </li>
-                </div>
-                <div className='navbar-content'>
-                <li>
-                        <a href='/' className='navbar-link'>Login</a>
-                    </li>     
-                    <li>
-                        <button className='btn-primary'>Sign up</button>
-                    </li>
-                </div>
-           
-                </ul> )}
-                <a className='menu-icon' href='/'
-                onClick={() => setIsVisible(!isVisible)}>
-     
-                    <img height={36} src={menu_icon} alt='Shortly logo'>                       
-                    </img></a>                   
-            </nav>
-        </>
+    window.addEventListener("resize", handleResize);
+  }, [isMenuOpen]);
+
+  return (
+    <>
+      <nav className={`container ${styles.nav}`}>
+        <a className={styles.navLogo} href="/">
+          <img src={logo} alt="Shortly logo"></img>
+        </a>
+        {isMenuOpen && (
+          <ul className={styles.navList}>
+            <div
+              className={
+                isMenuOpen
+                  ? styles.navContent
+                  : `${styles.navContent} ${styles.hidden}`
+              }
+            >
+              <li>
+                <a href="/" className={styles.navLink}>
+                  Features
+                </a>
+              </li>
+              <li>
+                <a href="/" className={styles.navLink}>
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/" className={styles.navLink}>
+                  Resources
+                </a>
+              </li>
+            </div>
+            <div className={styles.navContent}>
+              <li>
+                <a href="/" className={styles.navLink}>
+                  Login
+                </a>
+              </li>
+              <li className={styles.btnWrapper}>
+                <button className="btn-primary btn-small">Sign up</button>
+              </li>
+            </div>
+          </ul>
+        )}
+        <button
+          id="menuButton"
+          className={styles.navMenuIcon}
+          type="button"
+          onClick={showMobileMenu}
+        >
+          <img height={36} src={menu_icon} alt="Shortly logo"></img>
+        </button>
+      </nav>
+    </>
+  );
 }
 
 export default Navbar;

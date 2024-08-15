@@ -1,10 +1,10 @@
 import React from "react";
-import twitter from "../images/icon-twitter.svg";
-import facebook from "../images/icon-facebook.svg";
-import pinterest from "../images/icon-pinterest.svg";
-import instagram from "../images/icon-instagram.svg";
+import  { ReactComponent as Twitter } from "../images/icon-twitter.svg";
+import { ReactComponent as Facebook } from "../images/icon-facebook.svg";
+import {ReactComponent as Pinterest} from "../images/icon-pinterest.svg";
+import {ReactComponent as Instagram} from "../images/icon-instagram.svg";
 import { ReactComponent as Logo } from "../images/logo.svg";
-import css from "./Footer.module.css";
+import styles from "./Footer.module.css";
 
 function Footer() {
   const footerContent = [
@@ -18,51 +18,50 @@ function Footer() {
   const socialMediaContent = [
     {
       name: "Facebook logo",
-      src: facebook,
-      href: "/",
-    },
-    {
-      name: "Twitter logo",
-      src: twitter,
+      src: Facebook,
       href: "/",
     },
     {
       name: "Pinterest logo",
-      src: pinterest,
+      src: Pinterest,
       href: "/",
     },
     {
       name: "Instagram logo",
-      src: instagram,
+      src: Instagram,
       href: "/",
     },
+    {
+      name: "Twitter logo",
+      src: Twitter,
+      href: "/",
+    },
+    
   ];
   return (
-    <footer className={css.bgDark}>
-      <div className={css.container}>
-        <div className={`${css.layout} ${css.mobile}`}>
-          <Logo className={css.footerLogo}></Logo>
-          <div className={css.layout}>
-            <div className={css.footerLinksWrapper}>
+    <footer className={styles.bgDark}>
+      <div className={styles.container}>
+        <div className={`${styles.layout} ${styles.mobile}`}>
+          <Logo className={styles.footerLogo}></Logo>
+          <div className={styles.layout}>
+            <div className={styles.footerLinksWrapper}>
               {footerContent.map((element) => (
-                <div className={css.column}>
-                  <p className={css.columnTitle}>{element.name}</p>
+                <div key={element.name} className={styles.column}>
+                  <p className={styles.columnTitle}>{element.name}</p>
                   {element.content.map((contentName) => (
-                    <a className={css.footerLink} href="/">
+                    <a key={contentName}  className={styles.footerLink} href="/">
                       {contentName}
                     </a>
                   ))}
                 </div>
               ))}
             </div>
-            <div className={`${css.footerLinksWrapper} ${css.socialMedia}`}>
+            <div className={`${styles.footerLinksWrapper} ${styles.socialMedia}`}>
               {socialMediaContent.map((element) => (
-                <a href={element.href}>
-                  <img
-                    className={css.socialMediaIcon}
-                    src={element.src}
-                    alt={element.name}
-                  />
+                <a key={element.name} href={element.href}>
+                  <element.src
+                    className={styles.socialMediaIcon}
+                  ></element.src>
                 </a>
               ))}
             </div>

@@ -7,9 +7,9 @@ function CTA() {
     <section className={styles.ctaBg}>
       <div className="container">
         <div className={styles.ctaContent}>
-          <h2>Boost your links today</h2>
-          <div className="m-small"></div>
-         <button className="btn-primary">Get started</button>
+          <h2 className={styles.ctaTitle}>Boost your links today</h2>
+          <div className="p-small"></div>
+         <a href="#getUrl" className="btn-primary">Get started</a>
         </div>
       </div>
     </section>

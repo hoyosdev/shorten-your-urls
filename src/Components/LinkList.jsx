@@ -1,10 +1,9 @@
 import React from "react";
+import styles from "./LinkList.module.css"
 
 function LinkList({ loading, urlsList }) {
   function copyShortLink(e) {
     const copyText = e.target.value;
-    // copyText.select();
-    // copyText.setSelectionRange(0, 99999); // For mobile devices
     let buttons = document.querySelector(".btn-copied");
     if (buttons !== null) {
       buttons.innerText = "Copy";
@@ -16,16 +15,17 @@ function LinkList({ loading, urlsList }) {
     navigator.clipboard.writeText(copyText);
   }
   return (
-    <div className="list">
+    
+    <div className={styles.list}>
       {loading && <p>Loading</p>}
       {Array.isArray(urlsList) &&
         urlsList.map((element, i) => (
-          <div className="list-item" key={i}>
-            <p className="truncate">{element.longUrl}</p>
-            <div className="list-flex">
+          <div className={styles.listItem} key={i}>
+            <p className={styles.listItemTruncate}>{element.longUrl}</p>
+            <div className={styles.listFlex}>
               <p className="fc-cyan">{element.shortUrl}</p>
               <button
-                className="btn-primary btn-square"
+                className="btn-primary btn-square btn-small"
                 type="button"
                 value={element.shortUrl}
                 onClick={copyShortLink}
@@ -36,6 +36,7 @@ function LinkList({ loading, urlsList }) {
           </div>
         ))}
     </div>
+    
   );
 }
 

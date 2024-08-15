@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useLocalStorage } from "./useLocalStorage";
-import useAxios from "./UseAxios";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import useAxios from "../hooks/UseAxios";
+import styles from "./LinkBar.module.css"
 import LinkList from "./LinkList";
 
 function LinkBar() {
@@ -19,7 +20,7 @@ function LinkBar() {
   };
 
   useEffect(() => {
-    if (response) {
+    if (response && longUrl) {
       setUrlsList([
         ...urlsList,
         {
@@ -28,23 +29,23 @@ function LinkBar() {
         },
       ]);
     }
-    //localStorage.clear();
+    setLongUrl("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response, error]);
 
   return (
-    <div className="bg-light">
+    <section  className="bgLight">
       <div className="container relative">
-        <div className="link-bar-wrapper">
+        <div className={styles.inputWrapper}>
           <form onSubmit={handleSubmit}>
             <input
               placeholder="Shorten a link here..."
               type="text"
-              className="link-bar-input"
+              className={styles.input}
               name="urlstring"
               value={longUrl}
               onChange={(e) => setLongUrl(e.target.value)}
-              required 
+              required
             />
             <button type="submit" className="btn-primary btn-square">
               Shorten it!
@@ -52,13 +53,13 @@ function LinkBar() {
           </form>
           {error && (
             <em>
-              <p className="input-error">Please add a link</p>
+              <p className={styles.input}>Please add a link</p>
             </em>
           )}
         </div>
         <LinkList loading={loading} urlsList={urlsList} />
       </div>
-    </div>
+    </section>
   );
 }
 

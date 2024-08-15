@@ -45,9 +45,9 @@
 .footerLinksWrapper.socialMedia {
     margin-right: 1rem;
 }
-.socialMediaIcon {
-  width: 15px;
-  height: 15px;
+
+.socialMediaIcon path:hover {
+  fill: hsl(180, 66%, 49%);  
 }
 
 @media screen and (max-width:785px) {
@@ -59,11 +59,10 @@
         margin-bottom: 1rem;
     }
     .columnTitle {
-       
         margin: 0 1rem 0.5rem 1rem;
       }
       .footerLink {
-        margin: 0 0 0 1rem;
+        margin: 0.5rem 0 0 1rem;
       }
       .socialMedia {
         margin-right: 1rem;
@@ -90,7 +89,7 @@
     margin: 0.5rem 0;
   }
   .footerLink {
-    margin: 0 0;
+    margin: 0.25rem 0;
   }
   .footerLinksWrapper.socialMedia {
     flex-direction: row;
